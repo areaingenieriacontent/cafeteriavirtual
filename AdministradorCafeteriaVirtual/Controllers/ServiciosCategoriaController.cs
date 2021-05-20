@@ -9,9 +9,9 @@ using System.Data.Entity;
 
 namespace AdministradorCafeteriaVirtual.Controllers
 {
-    //[RoutePrefix("api/cafeteria")]
+    [RoutePrefix("api/cafeteria")]
     [EnableCors(origins:"*",headers:"*",methods:"*")]
-    public class ServiciosCategoria : ApiController
+    public class ServiciosCategoriaController : ApiController
     {
         CafeteriaDbContext cafeteriaDbContext = new CafeteriaDbContext();
         [HttpGet]
@@ -40,7 +40,7 @@ namespace AdministradorCafeteriaVirtual.Controllers
             cafeteriaDbContext.SaveChanges();
         }
         [HttpGet]
-        [Route("allcategories")]
+        [Route("AllCategories")]
         public List<Category> GetAllCategories() {
             List<Category> categorias = cafeteriaDbContext.Categories.Where(o => o.enable == true).ToList();
             return categorias;

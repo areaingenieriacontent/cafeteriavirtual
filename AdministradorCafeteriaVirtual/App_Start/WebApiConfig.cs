@@ -19,6 +19,9 @@ namespace AdministradorCafeteriaVirtual
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Elimino que el sistema devuelva en XML, sólo trabajaremos con JSON
+            config.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
     }
 }
