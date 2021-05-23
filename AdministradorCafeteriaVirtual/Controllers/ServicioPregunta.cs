@@ -12,9 +12,17 @@ namespace AdministradorCafeteriaVirtual.Controllers
     public class ServicioPregunta : ApiController
     {
         CafeteriaDbContext cafeteriaDbContext = new CafeteriaDbContext();
+
         [HttpGet]
-        [Route("getpregunta")]
-        public List<Pregunta> GetPreguntas(int userid)
+        [Route("GetPregunta")]
+        public Pregunta GetPregunta(int id)
+        {
+            Pregunta pregunta = cafeteriaDbContext.Preguntas.Where(o => o.idPregunta == id).ToList()[0];
+            return pregunta;
+        }
+        [HttpGet]
+        [Route("getpreguntasdeusuario")]
+        public List<Pregunta> GetPreguntasDeUsuario(int userid)
         {
             List<Pregunta> pregunta = cafeteriaDbContext.Preguntas.Where(o => o.idusuario == userid).ToList();
             return pregunta;
@@ -35,11 +43,6 @@ namespace AdministradorCafeteriaVirtual.Controllers
         {
            
         }
-        [HttpGet]
-        [Route("AllCategories")]
-        public List<Category> GetAllCategories()
-        {
-            return null;
-        }
+       
     }
 }
