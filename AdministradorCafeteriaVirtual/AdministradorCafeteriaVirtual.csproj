@@ -192,6 +192,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServicioChat.cs" />
+    <Compile Include="Controllers\ServicioLogin.cs" />
+    <Compile Include="Controllers\ServicioPregunta.cs" />
+    <Compile Include="Controllers\ServicioRoom.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
