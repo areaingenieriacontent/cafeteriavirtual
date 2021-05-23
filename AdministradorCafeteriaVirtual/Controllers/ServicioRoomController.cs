@@ -5,12 +5,11 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using AdministradorCafeteriaVirtual.Models;
 using System.Data.Entity;
-
 namespace AdministradorCafeteriaVirtual.Controllers
 {
     [RoutePrefix("api/cafeteria")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ServicioLogin : ApiController
+    public class ServicioRoomController : ApiController
     {
     }
 }
