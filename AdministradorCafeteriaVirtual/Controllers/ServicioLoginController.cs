@@ -60,5 +60,49 @@ namespace AdministradorCafeteriaVirtual.Controllers
             
             return userToReturn;
         }
+
+        [HttpGet]
+        [Route("loginattemp2")]
+        public CoffeShopUser LoginManagerGet(string userName, string userPassword)
+        {
+            User user = cafeteriaDbContext.Users.Where(x => x.username == userName && x.password == userPassword).FirstOrDefault();
+            CoffeShopUser userToReturn = new CoffeShopUser();
+            if (user != null)
+            {
+                if (user.enable)
+                {
+                    userToReturn = new CoffeShopUser
+                    {
+                        loginStatus = 200,
+                        firstName = user.name,
+                        lastName = user.lastName,
+                        userId = user.id
+                    };
+                    if (user.firstlog == null)
+                    {
+                        user.firstlog = DateTime.Now;
+                    }
+                    Login log = new Login
+                    {
+                        userid = user.id,
+                        logDate = DateTime.Now,
+                        ip = null,
+                        city = null
+                    };
+                    cafeteriaDbContext.Logins.Add(log);
+                    cafeteriaDbContext.SaveChanges();
+                }
+                else
+                {
+                    userToReturn.loginStatus = 110;
+                }
+            }
+            else
+            {
+                userToReturn.loginStatus = 100;
+            }
+            
+            return userToReturn;
+        }
     }
 }
